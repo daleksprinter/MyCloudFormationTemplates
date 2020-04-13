@@ -30,6 +30,16 @@ Resources:
                             - lambda.amazonaws.com
                     Action: 
                         - sts:AssumeRole
+            Policies:
+            - 
+                PolicyName: DynamoAccessPolicy
+                PolicyDocument:
+                    Version: '2012-10-17'
+                    Statement:
+                        - Effect: Allow
+                          Action:
+                            - dynamodb:*
+                          Resource: !GetAtt DynamoDBTable.Arn
 
     
     DynamoDBTable:
